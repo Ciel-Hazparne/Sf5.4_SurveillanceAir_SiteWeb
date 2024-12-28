@@ -1,0 +1,27 @@
+<title>{% block title %}Connexion{% endblock %}</title>
+<link href="/css/cssConnexion.css" type="text/css" rel="stylesheet">
+<link rel="icon" type="image/png" sizes="16*16" href="/image/icon.png"/>
+{% block body %}
+    {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <div class="container">
+
+        <form action="{{ path('security_login') }}" method="post">
+            <p>Bienvenue</p>
+            <input type="email" placeholder="Email" requied name="_username" value="{{ lastUsername }}"><br>
+            <input type="password" placeholder="Mot de passe" requied name="_password"><br>
+            <input type="submit" value="Connexion"><br>
+            <a href="{{ path('home') }}" >Retour</a>
+        </form>
+
+        <div class="drop drop-1"></div>
+        <div class="drop drop-2"></div>
+        <div class="drop drop-3"></div>
+        <div class="drop drop-4"></div>
+        <div class="drop drop-5"></div>
+
+    </div>
+
+{% endblock %}

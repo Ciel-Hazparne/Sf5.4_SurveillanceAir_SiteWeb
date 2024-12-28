@@ -1,0 +1,27 @@
+body {
+    margin-top: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.chart-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    overflow: hidden;
+    width: 50%;
+}
+
+.chart-card .card-body {
+    padding: 10px;
+}
+
+.example-wrapper {
+    max-width: 600px;
+    width: 100%;
+    font: 18px/1.5 sans-serif;
+}
+
+
+

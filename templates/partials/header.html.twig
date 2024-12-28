@@ -1,0 +1,29 @@
+<div class="banner">
+    <div class="navbar">
+        <img src="image/logo.png" class="logo">
+        <ul>
+            {% if is_granted('ROLE_USER') %}
+            <li><a href="{{ path('courbe') }}">Courbe</a></li>
+            {% endif %}
+            <li><a href="{{ path('home') }}">accueil</a></li>
+
+
+            {% if is_granted('ROLE_ADMIN') %}
+                <li>
+                    <a href="{{ path('admin_user_index') }}" >Administration</a>
+                </li>
+            {% endif %}
+
+            {% if not app.user %}
+                <li>
+                    <a href="{{ path('security_login') }}" >Connexion</a>
+                </li>
+            {% else %}
+                <li>
+                    <a href="{{ path('security_logout') }}" >Déconnexion</a>
+                </li>
+            {% endif %}
+
+        </ul>
+    </div>
+</div>

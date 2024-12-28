@@ -1,0 +1,80 @@
+<title>{% block title %}Courbe{% endblock %}</title>
+<link href="/css/cssCourbe.css" type="text/css" rel="stylesheet">
+<link rel="icon" type="image/png" sizes="16*16" href="/image/logo.png"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+
+{% block body %}
+        <div class="banner">
+            <div class="navbar">
+                <img src="image/logo.png" class="logo">
+                <ul>
+                    <li><a href="{{ path('home') }}">accueil</a></li>
+
+
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li>
+                            <a href="{{ path('admin_user_index') }}">Administration</a>
+                        </li>
+                    {% endif %}
+                    {% if not app.user %}
+                        <li>
+                            <a href="{{ path('security_login') }}">Connexion</a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="{{ path('security_logout') }}">Déconnexion</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+
+            <script src="https://kit.fontawesome.com/95a02bd20d.js"></script>
+
+            <div class="container">
+                <div class="card">
+                    <div class="face face1">
+                        <div class="content">
+                            <i class="fas fa-sun"></i>
+                            <h3>Temperature</h3>
+                        </div>
+                    </div>
+                    <div class="face face2">
+                        <div class="content">
+                            <a href="{{ path('temperature') }}"> Temperature</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="face face1">
+                        <div class="content">
+                            <i class="fas fa-wind"></i>
+                            <h3>Co2</h3>
+                        </div>
+                    </div>
+                    <div class="face face2">
+                        <div class="content">
+                            <a href="{{ path('co2') }}"> Co2</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="face face1">
+                        <div class="content">
+                            <i class="fas fa-water"></i>
+                            <h3>Hygrometrie</h3>
+                        </div>
+                    </div>
+                    <div class="face face2">
+                        <div class="content">
+                            <a href="{{ path('humidite') }}"> Humidite</a>
+                            <a href="{{ path('cov') }}"> Hygrometrie</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}

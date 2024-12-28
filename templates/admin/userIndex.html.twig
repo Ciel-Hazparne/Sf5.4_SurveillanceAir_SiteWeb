@@ -1,0 +1,53 @@
+{# {% extends 'base.html.twig' %} #}
+<title>{% block title %} Liste des Utilisateurs{% endblock %} </title>
+<link href="/css/admin.css" type="text/css" rel="stylesheet">
+<link rel="icon" type="image/png" sizes="16*16" href="/image/logo.png"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+
+
+{% block body %}
+
+    <div class="banner">
+        <div class="content">
+            <h1>Liste des Utilisateurs</h1>
+            <table style="margin: auto">
+                {# class="table table-striped"} #}
+                <thead>
+                <tr>
+                    <th style="color:white">Id</th>
+                    <th style="color:white">email</th>
+                    <th style="color:white">rôles</th>
+                    <th style="color:white">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td style="color:white">{{ user.id }}</td>
+                        <td style="color:white">{{ user.email }}</td>
+                        <td style="color:white">
+                            {% for role in user.roles %}
+                                {% if role=="ROLE_USER" %}
+                                    Utilisateur
+                                {% elseif role=="ROLE_EDITOR" %}
+                                    Editeur
+                                {% elseif role=="ROLE_ADMIN" %}
+                                    Administrateur
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            <button type="button"><span></span><a href="{{ path('admin_user_edit', {'id': user.id }) }}">Modifier</a></button>
+                            <button type="button"><span></span><a href="{{ path('admin_user_delete', {'id': user.id }) }}">Supprimer</a></button>
+
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <button type="button"><span></span><a href="{{ path('home') }}">Retour</a></button>
+        </div>
+    </div>
+
+
+{% endblock %}

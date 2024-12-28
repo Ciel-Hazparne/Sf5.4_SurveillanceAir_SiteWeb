@@ -1,0 +1,24 @@
+{# {% extends 'base.html.twig' %} #}
+{% block title %}Inscription{% endblock %}
+<link href="/css/cssConnexion.css" type="text/css" rel="stylesheet">
+<link rel="icon" type="image/png" sizes="16*16" href="/image/icon.png"/>
+
+
+{% block body %}
+    <div class="container">
+        <h1>Inscription sur le site</h1>
+        {{ form_start(form) }}
+        {{ form_row(form.email, { 'attr': {'placeholder': 'Adresse email...' } }) }}
+        {{ form_row(form.username, { 'label':'Nom d\'utilisateur', 'attr': {'placeholder':'Nom d\'utilisateur...' } }) }}
+        {{ form_row(form.password, { 'label':'Mot de passe', 'attr': {'placeholder':'Mot de passe...' } }) }}
+        {{ form_row(form.confirm_password, { 'label':'Répétez votre mot de passe', 'attr':{'placeholder':'Répétez votre mot de passe...' } }) }}
+        <button type="submit" class="btn btn-success">Inscription</button>
+        <a href="{{ path('home') }}" >Retour</a>
+
+        <div class="drop drop-1"></div>
+        <div class="drop drop-2"></div>
+        <div class="drop drop-4"></div>
+
+    </div>
+    {{ form_end(form) }}
+{% endblock %}
